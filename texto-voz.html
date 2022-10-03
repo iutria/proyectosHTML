@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="inputs">
+        <input id="texto" type="text" placeholder="ingresa el texto">
+        <button onclick="leer()">🔊</button>
+    </div>
+    <style>
+        *{
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #0c2461;
+        }
+        .inputs{
+            border-bottom: 2px solid gray;
+        }
+        #texto{
+            width: 500px;
+            height: 50px;
+            border: none;
+            padding-bottom: 0px;
+            background: transparent;
+            color: white;
+        }
+        #texto:focus{
+            border: none;
+            outline: none;
+        }
+        .borde{
+            border-bottom-color: white;
+        }
+        button{
+            height: 50px;
+            background: transparent;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+    </style>
+    <script>
+        document.getElementById('texto').addEventListener('keypress',(e)=>{
+            if(e.code=='Enter'){
+                leer();
+            }
+        })
+        function leer(){
+            let texto = document.getElementById('texto').value;
+            texto = texto.length == 0 ? 'no hay texto para leer' : texto;
+            let voz = new SpeechSynthesisUtterance(texto);
+            voz.lang = 'es-MX';
+            speechSynthesis.speak(voz);
+        }
+        document.getElementById('texto').addEventListener('focus',(e)=>{
+            let lista = document.getElementsByClassName('inputs');
+            lista[0].classList.add('borde');
+        })
+        document.getElementById('texto').addEventListener('focusout',(e)=>{
+            let lista = document.getElementsByClassName('inputs');
+            lista[0].classList.remove('borde');
+        })
+    </script>
+</body>
+</html>

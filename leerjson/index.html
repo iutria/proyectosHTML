@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="lista">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Rol</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="listado">
+                
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        table{
+            border: 1px solid;
+            font-family: Arial, Helvetica, sans-serif;
+            background: black;
+        }
+        table th{            
+            padding: 10px;
+            border: 1px solid;
+            background: royalblue;
+        }
+        table td{
+            text-align: center;
+            padding: 10px;
+            border: 1px solid;
+            background: royalblue;
+        }
+    </style>
+
+    <script>
+        // fetch('data.json').then(r=> r.json()).then(j => cargarDatos(j));
+        
+        cargarDatos();
+
+        async function cargarDatos(){
+
+            let data = await fetch('data.json').then(r=> r.json());
+
+            let lista = '';
+            
+            for (const key in data) {
+                console.log(key)
+                lista += `
+                    <tr>
+                        <td>${data[key]["documento"]}</td>
+                        <td>${data[key]["nombre"]}</td>
+                        <td>${data[key]["apellido"]}</td>
+                        <td style='font-size: 50px'>${data[key]["rol"]=='estudiante'?'🎒':'👨‍🎓'}</td>
+                        <td style='font-size: 50px'>${data[key]["estado"]?'👍':'👎'}</td>
+                    </tr>
+                `;
+            }
+            document.getElementById('listado').innerHTML = lista;
+        }
+    </script>
+</body>
+</html>

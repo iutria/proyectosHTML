@@ -1,0 +1,23 @@
+{
+    "a":{
+        "documento":"1234566781",
+        "nombre":"ivan",
+        "apellido":"utria",
+        "rol":"docente",
+        "estado": false
+    },
+    "k":{
+        "documento":"1239871239",
+        "nombre":"maria",
+        "apellido":"alvarez",
+        "rol":"estudiante",
+        "estado": true
+    },
+    "3":{
+        "documento":"3217901293",
+        "nombre":"jesus",
+        "apellido":"molina",
+        "rol":"estudiante",
+        "estado": true
+    }
+}

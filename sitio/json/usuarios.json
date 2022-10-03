@@ -1,0 +1,10 @@
+{
+    "1":{
+        "documento":"1234532141",
+        "nombre":"ivan",
+        "apellido":"utria",
+        "correo":"i@correo.com",
+        "clave":"1234",
+        "rol":"docente"
+    }
+}
